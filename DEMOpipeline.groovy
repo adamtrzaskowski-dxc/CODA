@@ -101,7 +101,7 @@ pipeline {
                                                         def list = []
                                                         File textfile= new File("tempFile.txt") << new URL ("https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt").getText()
                                                         textfile.eachLine { line ->list.add(line)}
-                                                        return listd
+                                                        return list
                                                     '''
                                                 
                                         ]
