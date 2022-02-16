@@ -119,6 +119,8 @@ pipeline {
                     powershell 'Write-Output "$env:Env"'
                     powershell 'Write-Output "$env:AMIList"'
                     powershell 'Write-Output "$env:FromFile"'
+                    powershell 'Write-Output "$env:WORKSPACE"'
+
                 }
             }
         }
