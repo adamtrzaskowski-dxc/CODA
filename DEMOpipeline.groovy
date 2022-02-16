@@ -100,6 +100,7 @@ pipeline {
                                             script: '''
             def list = []
             File textfile= readFile("test.txt")
+            textfile.eachLine { line ->list.add(line)}
             return list
                                                     '''
                                                 
@@ -121,7 +122,8 @@ pipeline {
                     script {
             def list = []
             def textfile= readFile("test.txt")
-            print textfile
+            textfile.eachLine { line ->list.add(line)}
+            print list
                     }
 
                 }
