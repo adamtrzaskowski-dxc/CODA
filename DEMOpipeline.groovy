@@ -98,12 +98,10 @@ pipeline {
                                             classpath: [], 
                                             sandbox: false, 
                                             script: '''
-                                                    def list = []
-                                                    def file = "${WORKSPACE}\\\\test.txt"
-                                                    File textfile= new File(file) 
-
-                                                    textfile.eachLine { line ->list.add(line)}
-                                                    return list
+                                                        def list = []
+                                                        File textfile= new File("tempFile.txt") << new URL ("https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt").getText()
+                                                        textfile.eachLine { line ->list.add(line)}
+                                                        return listd
                                                     '''
                                                 
                                         ]
