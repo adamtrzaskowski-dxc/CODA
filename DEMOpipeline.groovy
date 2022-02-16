@@ -121,8 +121,8 @@ pipeline {
                     powershell 'get-content "$env:WORKSPACE\\test.txt"'
                     script {
             def list = []
-            def textfile= readFile("${env.WORKSPACE}/test.txt")
-            textfile.eachLine { line -> list.add(line)}
+            File textfile= new File("${env.WORKSPACE}/test.txt")
+            textfile.eachLine { line ->list.add(line)}
             print list
                     }
 
