@@ -99,7 +99,7 @@ pipeline {
                                             sandbox: false, 
                                             script: '''
                                                     def list = []
-                                                    def file = "C:\\\\CODA\\\\test.txt"
+                                                    def file = "${WORKSPACE}\\\\test.txt"
                                                     File textfile= new File(file) 
 
                                                     textfile.eachLine { line ->list.add(line)}
