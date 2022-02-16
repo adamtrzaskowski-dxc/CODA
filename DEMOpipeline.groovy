@@ -98,10 +98,9 @@ pipeline {
                                             classpath: [], 
                                             sandbox: false, 
                                             script: '''
-                                                        def list = []
-                                                        File textfile= new File("tempFile.txt") << new URL ("https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt").getText()
-                                                        textfile.eachLine { line ->list.add(line)}
-                                                        return list
+                                                        def keys = []
+                                                        "https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt".toURL().text.eachLine{ keys << it }
+                                                        return keys
                                                     '''
                                                 
                                         ]
