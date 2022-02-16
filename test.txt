@@ -1,0 +1,5 @@
+firstValueFromFile
+secondValueFromFile
+third
+fourt
+another value
