@@ -1,6 +1,5 @@
-firstValueFromFile
-secondValueFromFile
-third
-fourt
-anothervalue
-WORKSPACE
+1
+2
+3
+4
+blabla
