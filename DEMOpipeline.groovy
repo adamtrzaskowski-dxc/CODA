@@ -119,7 +119,12 @@ pipeline {
                     powershell 'Write-Output "$env:FromFile"'
                     powershell 'Write-Output "$env:WORKSPACE"'
                     powershell 'get-content "$env:WORKSPACE\\test.txt"'
-                    print "${WORKSPACE}"
+                                            script: '''
+            def list = []
+            File textfile= new File("${WORKSPACE}\\\\test.txt")
+            textfile.eachLine { line ->list.add(line)}
+            print list
+                                                    '''
 
                 }
             }
