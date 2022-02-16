@@ -99,7 +99,7 @@ pipeline {
                                             sandbox: false, 
                                             script: '''
             def list = []
-            File textfile= new File("${WORKSPACE}\\\\test.txt")
+            File textfile= new File("${env.WORKSPACE}\\\\test.txt")
             textfile.eachLine { line ->list.add(line)}
             return list
                                                     '''
