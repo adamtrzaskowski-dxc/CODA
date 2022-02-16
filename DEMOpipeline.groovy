@@ -119,7 +119,7 @@ pipeline {
                     powershell 'Write-Output "$env:FromFile"'
                     powershell 'Write-Output "$env:WORKSPACE"'
                     powershell 'get-content "$env:WORKSPACE\\test.txt"'
-                    print ${WORKSPACE}
+                    print "${WORKSPACE}"
 
                 }
             }
