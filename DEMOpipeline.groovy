@@ -99,8 +99,7 @@ pipeline {
                                             sandbox: false, 
                                             script: '''
             def list = []
-            File textfile= new File("${env.WORKSPACE}\\\\test.txt")
-            textfile.eachLine { line ->list.add(line)}
+            File textfile= readfile("test.txt")
             return list
                                                     '''
                                                 
@@ -121,9 +120,8 @@ pipeline {
                     powershell 'get-content "$env:WORKSPACE\\test.txt"'
                     script {
             def list = []
-            File textfile= new File("${WORKSPACE}/test.txt")
-            textfile.eachLine { line ->list.add(line)}
-            print list
+            def textfile= readfile("test.txt")
+            print textfile
                     }
 
                 }
