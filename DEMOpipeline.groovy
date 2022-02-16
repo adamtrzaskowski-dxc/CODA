@@ -122,8 +122,8 @@ pipeline {
                     script {
             def list = []
             def textfile= readFile("test.txt")
-            textfile.eachLine { line ->list.add(line)}
-            print list
+          //  textfile.eachLine { line ->list.add(line)} eachline not supported
+            print textfile
                     }
 
                 }
