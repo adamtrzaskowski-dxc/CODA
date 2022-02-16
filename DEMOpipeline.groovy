@@ -118,7 +118,7 @@ pipeline {
                     powershell 'Write-Output "$env:AMIList"'
                     powershell 'Write-Output "$env:FromFile"'
                     powershell 'Write-Output "$env:WORKSPACE"'
-                    powershell 'get-contents "$env:WORKSPACE\test.txt"'
+                    powershell 'get-content "$env:WORKSPACE\test.txt"'
 
                 }
             }
