@@ -104,6 +104,8 @@ java.net.Authenticator.setDefault (new Authenticator() {
     }
 });
 
+1 String filename = "c:\\\\temp\\\\groovydownloadtest.txt"  
+3 boolean fileSuccessfullyDeleted =  new File(filename).delete() 
 File destinationFile= new File("c:\\\\temp\\\\groovydownloadtest.txt")
 destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt").newInputStream() }
             def list = []
