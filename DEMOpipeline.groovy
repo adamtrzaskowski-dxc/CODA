@@ -104,7 +104,7 @@ java.net.Authenticator.setDefault (new Authenticator() {
     }
 });
 
-File destinationFile= new File("c:\\temp\\groovydownloadtest.txt")
+File destinationFile= new File("c:\\\\temp\\\\groovydownloadtest.txt")
 destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt").newInputStream() }
             def list = []
             destinationFile.eachLine { line ->list.add(line)}
