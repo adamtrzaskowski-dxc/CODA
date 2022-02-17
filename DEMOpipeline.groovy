@@ -98,9 +98,16 @@ pipeline {
                                             classpath: [], 
                                             sandbox: false, 
                                             script: '''
+java.net.Authenticator.setDefault (new Authenticator() {
+    protected PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication(username, password.toCharArray());
+    }
+});
+
+File destinationFile= new File("c:\\temp\\groovydownloadtest.txt")
+destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.com/adamtrzaskowski-dxc/CODA/main/test.txt").newInputStream() }
             def list = []
-            File textfile= readFile("test.txt")
-            textfile.eachLine { line ->list.add(line)}
+            destinationFile.eachLine { line ->list.add(line)}
             return list
                                                     '''
                                                 
@@ -119,15 +126,7 @@ pipeline {
                     powershell 'Write-Output "$env:FromFile"'
                     powershell 'Write-Output "$env:WORKSPACE"'
                     powershell 'get-content "$env:WORKSPACE\\test.txt"'
-                    script {
-            def list = []
-            def textfile= readFile("test.txt")
-          //  textfile.eachLine { line ->list.add(line)} eachline not supported
-            print textfile
-                    }
-
                 }
             }
         }
-        
 }
