@@ -132,9 +132,6 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                     powershell '''
                     $data = get-content "$env:CITRIXDATA"
                     write-output $data
-                    $password = ConvertTo-SecureString "data[0].p2" -AsPlainText -Force
-                    $Cred = New-Object System.Management.Automation.PSCredential ($data[0].P1, $password)
-                    write-output $cred
                     '''
                 }
             }
