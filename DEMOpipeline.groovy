@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environemnt{
+        CitrixConnectionsData = credentials('secret')
+    }
         stages {
             stage('Parameters'){
                 steps {
@@ -126,8 +129,7 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                     powershell 'Write-Output "$env:Env"'
                     powershell 'Write-Output "$env:AMIList"'
                     powershell 'Write-Output "$env:FromFile"'
-                    powershell 'Write-Output "$env:WORKSPACE"'
-                    powershell 'get-content "$env:WORKSPACE\\test.txt"'
+                    powershell 'Write-Output "$env:secret"'
                 }
             }
         }
