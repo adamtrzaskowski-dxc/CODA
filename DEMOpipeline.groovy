@@ -129,7 +129,6 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                     powershell 'Write-Output "$env:Env"'
                     powershell 'Write-Output "$env:AMIList"'
                     powershell 'Write-Output "$env:FromFile"'
-                    echo secret
                     powershell '''
                     $data = get-content "$env:secret"
                     $password = ConvertTo-SecureString "data[0].p2" -AsPlainText -Force
