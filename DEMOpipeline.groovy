@@ -130,7 +130,7 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                     powershell 'Write-Output "$env:AMIList"'
                     powershell 'Write-Output "$env:FromFile"'
                     powershell '''
-                    $data = get-content "$env:secret"
+                    $data = get-content "$env:CitrixConnectionsData"
                     $password = ConvertTo-SecureString "data[0].p2" -AsPlainText -Force
                     $Cred = New-Object System.Management.Automation.PSCredential ($data[0].P1, $password)
                     write-output $cred
