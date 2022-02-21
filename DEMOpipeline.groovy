@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environemnt{
+    environment {
         CitrixConnectionsData = credentials('secret')
     }
         stages {
