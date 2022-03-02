@@ -119,6 +119,42 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                                         ]
                                     ]
                                 ],
+                                                                [$class: 'ChoiceParameter', 
+                                    choiceType: 'PT_SINGLE_SELECT', 
+                                    description: 'Select the ConnectionData from the Dropdown List', 
+                                    filterLength: 1, 
+                                    filterable: false, 
+                                    name: 'ConnectionData', 
+                                    script: [
+                                        $class: 'GroovyScript', 
+                                        fallbackScript: [
+                                            classpath: [], 
+                                            sandbox: false, 
+                                            script: 
+                                                "return['Could not get connections from DB']"
+                                        ], 
+                                        script: [
+                                            classpath: [], 
+                                            sandbox: false, 
+                                            script: 
+                                                "
+                                                import groovy.sql.Sql
+import com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+def output = []
+
+def sql = Sql.newInstance('jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;', 'CodaUser', 'CodaPassword', 'com.microsoft.sqlserver.jdbc.SQLServerDriver')
+
+String sqlString = 'SELECT [ConnectionData] FROM [CODA].[dbo].[Connections] where ConnectionType = \'FirstType\''
+sql.eachRow(sqlString){ row -> output.push(row[0])
+}
+
+return output.sort()
+                                                "
+                                        ]
+                                    ]
+                                ],
+                                
                             ])
                         ])
                     }
