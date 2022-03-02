@@ -128,16 +128,12 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                                     script: [
                                         $class: 'GroovyScript', 
                                         fallbackScript: [
-                                            classpath: [], 
-                                            sandbox: false, 
                                             script: 
                                                 "return['Could not get connections from DB']"
                                         ], 
                                         script: [
                                             script: '''
-                                                
                                                 import groovy.sql.Sql
-import com.microsoft.sqlserver.jdbc.SQLServerDriver
 
 def output = []
 
@@ -146,7 +142,7 @@ def sql = Sql.newInstance('jdbc:sqlserver://localhost:1433;encrypt=true;trustSer
 String sqlString = 'SELECT [ConnectionData] FROM [CODA].[dbo].[Connections]'
 sql.eachRow(sqlString){ row -> output.push(row[0])
 }
-
+sql.close()
 return output.sort()
                                                 '''
                                         ]
