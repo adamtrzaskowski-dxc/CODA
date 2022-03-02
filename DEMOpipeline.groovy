@@ -137,7 +137,7 @@ destinationFile.withOutputStream { it << new URL("https://raw.githubusercontent.
                                             classpath: [], 
                                             sandbox: false, 
                                             script: 
-                                                "
+                                                '''
                                                 import groovy.sql.Sql
 import com.microsoft.sqlserver.jdbc.SQLServerDriver
 
@@ -150,7 +150,7 @@ sql.eachRow(sqlString){ row -> output.push(row[0])
 }
 
 return output.sort()
-                                                "
+                                                '''
                                         ]
                                     ]
                                 ],
