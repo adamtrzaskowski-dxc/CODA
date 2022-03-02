@@ -140,7 +140,7 @@ def output = []
 def sql = Sql.newInstance('jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;', 'CodaUser', 'CodaPassword', 'com.microsoft.sqlserver.jdbc.SQLServerDriver')
 
 String sqlString = 'SELECT [ConnectionData] FROM [CODA].[dbo].[Connections]'
-sql.eachRow(sqlString){ row -> output.push(row[0])
+sql.eachRow(sqlString){ row -> output.push(row.'ConnectionData')
 }
 sql.close()
 return output.sort()
