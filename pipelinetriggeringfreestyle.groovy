@@ -12,6 +12,7 @@ pipeline {
     post { 
         always { 
             build job: 'CODACreds'
+            build job: 'Secrettest'
         }
     }
 }
