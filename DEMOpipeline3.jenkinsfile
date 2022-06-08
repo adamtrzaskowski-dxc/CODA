@@ -23,7 +23,7 @@ parameters: [choice(name: 'BRANCH_NAME', choices: "${liste}", description: 'Bran
 }
 stage('Checkout external proj') {
 echo "${env.BRANCH_SCOPE}"
-git branch: "${env.BRANCH_SCOPE},
+git branch: "${env.BRANCH_SCOPE}",
 credentialsId: 'Telcel',
 url: 'https://github.com/zagadishreddy/game-of-life.git'
 
