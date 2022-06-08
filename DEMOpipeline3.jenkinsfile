@@ -4,8 +4,8 @@ APPLICATION_NAME = “Telcel”
 GITHUB_BRANCH = '${env.BRANCH_NAME}'
 node{
 // Stages
-stage (“Listing Branches”) {
-echo “Initializing workflow”
+stage ('Listing Branches') {
+echo 'Initializing workflow'
 //checkout code
 echo GITHUB_PROJECT
 git url: GITHUB_PROJECT, credentialsId: GITHUB_CREDENTIALS_ID
