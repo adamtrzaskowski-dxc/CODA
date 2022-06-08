@@ -32,5 +32,20 @@ pipeline {
                 }
             }
         }
+                stage('Setup parameters another stage') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            string(
+                                defaultValue: 'scriptcrunchtwo', 
+                                name: 'STRING-PARAMETER2', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
     }   
 }
