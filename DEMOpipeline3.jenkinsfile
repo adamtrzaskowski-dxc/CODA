@@ -1,6 +1,4 @@
 GITHUB_PROJECT = 'https://github.com/adamtrzaskowski-dxc/CODA.git'
-GITHUB_CREDENTIALS_ID = “Telcel” //maps to a Jenkins Credentials Vault ID
-APPLICATION_NAME = “Telcel”
 GITHUB_BRANCH = '${env.BRANCH_NAME}'
 node{
 // Stages
@@ -8,7 +6,7 @@ stage ('Listing Branches') {
 echo 'Initializing workflow'
 //checkout code
 echo GITHUB_PROJECT
-git url: GITHUB_PROJECT, credentialsId: GITHUB_CREDENTIALS_ID
+git url: GITHUB_PROJECT
 sh 'git branch -r | awk \'{print $1}\' ORS=\'\\n\' >branches.txt'
 sh 'cut -d '/' -f 2 branches.txt > branch.txt'
 //sh “sed s'/origin”\'///g branches.txt > branch.tx”
@@ -24,7 +22,6 @@ parameters: [choice(name: 'BRANCH_NAME', choices: "${liste}", description: 'Bran
 stage('Checkout external proj') {
 echo "${env.BRANCH_SCOPE}"
 git branch: "${env.BRANCH_SCOPE}",
-credentialsId: 'Telcel',
 url: 'https://github.com/zagadishreddy/game-of-life.git'
 
 sh “ls -lat”
